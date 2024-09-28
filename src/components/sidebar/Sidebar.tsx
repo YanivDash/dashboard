@@ -11,7 +11,7 @@ const Sidebar = () => {
 
   return (
     <div className=" h-[100vh] shadow-xl overflow-y-scroll no-scrollbar min-w-5 pb-28">
-      <h3 className="flex justify-center font-semibold m-2 text-2xl">
+      <h3 className="flex justify-center pt-2 m-2 text-2xl font-thin">
         Dashboard
       </h3>
 

@@ -13,6 +13,7 @@ import {
   ActionIcon,
 } from "rizzui";
 import { MdOutlineClose } from "react-icons/md";
+import { adminTeamsData } from "@/siteConfig/adminTeamsData";
 
 const schema = z.object({
   emails: z
@@ -67,6 +68,18 @@ export default function Form() {
   });
   const onSubmit = (data: SchemaType) => {
     console.log("Submitted data", data);
+    const newTeamMember = {
+      id: (adminTeamsData.length + 1).toString(), // Create a new ID
+      name: data.name,
+      role: data.role.join(", "), // Convert array of roles to a string
+      email: data.emails.map((emailObj) => emailObj.email).join(", "), // Join multiple emails
+      status: "Active", // Set default status to Active, or you can add it in the form
+      warehouse: data.warehouse.join(", "), // Convert array of warehouses to a string
+    };
+
+    // Add the new member to the existing team data
+    adminTeamsData.push(newTeamMember);
+    console.log("Updated Teams Data: ", adminTeamsData);
     setModalState(false);
   };
 
